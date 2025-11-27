@@ -1,5 +1,7 @@
 import os
+from typing import List
 from qdrant_client import QdrantClient, models
+from backend.src.models.book import BookContent
 
 def get_qdrant_client():
     """Initializes and returns a Qdrant client."""
@@ -45,3 +47,45 @@ if __name__ == "__main__":
         print(f"Error during Qdrant setup: {e}")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
+
+def upsert_book_content_to_qdrant(client: QdrantClient, collection_name: str, content: BookContent):
+    """Upserts a BookContent object into the specified Qdrant collection."""
+    # Qdrant expects payload and vector. The ID can be content.id if it's unique.
+    # Ensure embedding is a list of floats, and handle cases where it might be empty or None.
+    vector = content.embedding if content.embedding else [0.0] * 768 # Default to 768 zeros if empty
+    if not vector:
+        raise ValueError("Embedding vector cannot be empty.")
+
+    # Convert metadata to a dictionary for Qdrant payload
+    payload = content.metadata.copy()
+    payload["text_content"] = content.text # Store the full text in payload as well
+    payload["book_content_id"] = content.id # Store the BookContent ID in payload
+
+    client.upsert(
+        collection_name=collection_name,
+        points=models.Batch(
+            ids=[content.id],
+            vectors=[vector],
+            payloads=[payload]
+        )
+    )
+    print(f"Upserted BookContent with ID {content.id} to collection '{collection_name}'.")
+
+def retrieve_similar_content_from_qdrant(client: QdrantClient, collection_name: str, query_embedding: List[float], limit: int = 3) -> List[dict]:
+    """Retrieves content similar to the query embedding from Qdrant."""
+    if not query_embedding:
+        raise ValueError("Query embedding cannot be empty.")
+
+    search_result = client.search(
+        collection_name=collection_name,
+        query_vector=query_embedding,
+        limit=limit,
+        with_payload=True # Retrieve the stored payload (including text_content)
+    )
+
+    results = []
+    for hit in search_result:
+        results.append({"id": hit.id, "score": hit.score, "payload": hit.payload})
+    print(f"Retrieved {len(results)} similar content items from collection '{collection_name}'.")
+    return results
+

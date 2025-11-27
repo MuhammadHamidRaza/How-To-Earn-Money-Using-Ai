@@ -57,10 +57,10 @@ description: "Task list for 'How to Earn Money Using AI Book' feature implementa
 ### Implementation for User Story 1
 
 - [x] T010 [P] [US1] Create `BookOutline` and `BookContent` models in `backend/src/models/book.py`
-- [ ] T011 [US1] Implement `BookOutlineService` for managing book structure in `backend/src/services/book_outline_service.py`
-- [ ] T012 [US1] Implement `ContentGenerationService` for AI generation (using OpenAI Agent SDK) in `backend/src/services/content_generation_service.py`
-- [ ] T013 [US1] Implement endpoint for outline management and content generation in `backend/src/api/content.py`
-- [ ] T014 [US1] Implement logic to store generated content and embeddings in Qdrant via `backend/src/services/qdrant_client.py`
+- [x] T011 [US1] Implement `BookOutlineService` for managing book structure in `backend/src/services/book_outline_service.py`
+- [x] T012 [US1] Implement `ContentGenerationService` for AI generation (using OpenAI Agent SDK) in `backend/src/services/content_generation_service.py`
+- [x] T013 [US1] Implement endpoint for outline management and content generation in `backend/src/api/content.py`
+- [x] T014 [US1] Implement logic to store generated content and embeddings in Qdrant via `backend/src/services/qdrant_client.py`
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
@@ -74,12 +74,12 @@ description: "Task list for 'How to Earn Money Using AI Book' feature implementa
 
 ### Implementation for User Story 2
 
-- [ ] T015 [P] [US2] Create `ReaderQuery` and `ChatbotResponse` models in `backend/src/models/chatbot.py`
-- [ ] T016 [US2] Implement `RAGService` for retrieval and response generation (using OpenAI Agent SDK and Qdrant) in `backend/src/services/rag_service.py`
-- [ ] T017 [P] [US2] Create FastAPI endpoint `/chat/query` in `backend/src/api/chatbot.py`
-- [ ] T018 [P] [US2] Create FastAPI endpoint `/chat/query-with-context` in `backend/src/api/chatbot.py`
-- [ ] T019 [US2] Develop Docusaurus React component for chatbot UI in `frontend/book/src/components/Chatbot.js`
-- [ ] T020 [US2] Integrate chatbot UI component into Docusaurus book pages in `frontend/book/src/theme/DocItem/Content/index.js`
+- [x] T015 [P] [US2] Create `ReaderQuery` and `ChatbotResponse` models in `backend/src/models/chatbot.py`
+- [x] T016 [US2] Implement `RAGService` for retrieval and response generation (using OpenAI Agent SDK and Qdrant) in `backend/src/services/rag_service.py`
+- [x] T017 [P] [US2] Create FastAPI endpoint `/chat/query` in `backend/src/api/chatbot.py`
+- [x] T018 [P] [US2] Create FastAPI endpoint `/chat/query-with-context` in `backend/src/api/chatbot.py`
+- [x] T019 [US2] Develop Docusaurus React component for chatbot UI in `frontend/book/src/components/Chatbot.js`
+- [x] T020 [US2] Integrate chatbot UI component into Docusaurus book pages in `frontend/book/src/theme/DocItem/Content/index.js` (integrated into `docs/intro.mdx` instead)
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 
@@ -93,7 +93,7 @@ description: "Task list for 'How to Earn Money Using AI Book' feature implementa
 
 ### Implementation for User Story 3
 
-- [ ] T021 [US3] Configure Docusaurus for GitHub Pages deployment in `frontend/book/docusaurus.config.js`
+- [x] T021 [US3] Configure Docusaurus for GitHub Pages deployment in `frontend/book/docusaurus.config.ts`
 - [ ] T022 [US3] Setup CI/CD pipeline (e.g., GitHub Actions) for automated Docusaurus build and deployment in `.github/workflows/deploy.yaml`
 - [ ] T023 [US3] Verify correct routing and linking in the deployed book via end-to-end tests using `Playwright` in `frontend/book/tests/e2e/deploy_check.spec.js`
 

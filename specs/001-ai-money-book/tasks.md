@@ -56,7 +56,7 @@ description: "Task list for 'How to Earn Money Using AI Book' feature implementa
 
 ### Implementation for User Story 1
 
-- [ ] T010 [P] [US1] Create `BookOutline` and `BookContent` models in `backend/src/models/book.py`
+- [x] T010 [P] [US1] Create `BookOutline` and `BookContent` models in `backend/src/models/book.py`
 - [ ] T011 [US1] Implement `BookOutlineService` for managing book structure in `backend/src/services/book_outline_service.py`
 - [ ] T012 [US1] Implement `ContentGenerationService` for AI generation (using OpenAI Agent SDK) in `backend/src/services/content_generation_service.py`
 - [ ] T013 [US1] Implement endpoint for outline management and content generation in `backend/src/api/content.py`

@@ -1,0 +1,114 @@
+openapi: 3.0.0
+info:
+  title: RAG Chatbot API
+  version: 1.0.0
+  description: API for interacting with the RAG chatbot embedded in the "How to Earn Money Using AI" book.
+
+servers:
+  - url: /api/v1
+    description: Local/Development Server
+
+paths:
+  /chat/query:
+    post:
+      summary: Submit a query to the RAG chatbot
+      operationId: submitChatQuery
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatQueryRequest'
+      responses:
+        '200':
+          description: Successful response from the chatbot
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+        '400':
+          description: Invalid request
+        '500':
+          description: Internal server error
+
+  /chat/query-with-context:
+    post:
+      summary: Submit a query with selected text context to the RAG chatbot
+      operationId: submitChatQueryWithContext
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatQueryWithContextRequest'
+      responses:
+        '200':
+          description: Successful response from the chatbot
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+        '400':
+          description: Invalid request
+        '500':
+          description: Internal server error
+
+components:
+  schemas:
+    ChatQueryRequest:
+      type: object
+      required:
+        - query_text
+      properties:
+        query_text:
+          type: string
+          description: The user's question to the chatbot.
+          example: "How can AI help me earn money?"
+        session_id:
+          type: string
+          description: Optional session ID for persistent conversations.
+          nullable: true
+          example: "user-123-session-abc"
+
+    ChatQueryWithContextRequest:
+      type: object
+      required:
+        - query_text
+        - context_text
+      properties:
+        query_text:
+          type: string
+          description: The user's question to the chatbot.
+          example: "What does this mean for earning money?"
+        context_text:
+          type: string
+          description: The selected text portion from the book to use as context.
+          example: "Artificial intelligence (AI) offers numerous opportunities for individuals to generate income."
+        session_id:
+          type: string
+          description: Optional session ID for persistent conversations.
+          nullable: true
+          example: "user-123-session-abc"
+
+    ChatResponse:
+      type: object
+      required:
+        - response_text
+      properties:
+        response_text:
+          type: string
+          description: The chatbot's generated answer.
+          example: "AI can help you earn money through freelance work, content creation, and developing AI-powered tools."
+        source_documents:
+          type: array
+          description: A list of relevant document snippets or IDs from the book used as sources.
+          items:
+            type: string
+          example:
+            - "Chapter 1: Introduction to AI Monetization"
+            - "Section 2.3: AI in Content Creation"
+        session_id:
+          type: string
+          description: The session ID, if provided in the request.
+          nullable: true
+          example: "user-123-session-abc"

@@ -94,8 +94,8 @@ description: "Task list for 'How to Earn Money Using AI Book' feature implementa
 ### Implementation for User Story 3
 
 - [x] T021 [US3] Configure Docusaurus for GitHub Pages deployment in `frontend/book/docusaurus.config.ts`
-- [ ] T022 [US3] Setup CI/CD pipeline (e.g., GitHub Actions) for automated Docusaurus build and deployment in `.github/workflows/deploy.yaml`
-- [ ] T023 [US3] Verify correct routing and linking in the deployed book via end-to-end tests using `Playwright` in `frontend/book/tests/e2e/deploy_check.spec.js`
+- [x] T022 [US3] Setup CI/CD pipeline (e.g., GitHub Actions) for automated Docusaurus build and deployment in `.github/workflows/deploy.yaml`
+- [x] T023 [US3] Verify correct routing and linking in the deployed book via end-to-end tests using `Playwright` in `frontend/book/tests/e2e/deploy_check.spec.js`
 
 **Checkpoint**: All user stories should now be independently functional
 
@@ -105,12 +105,12 @@ description: "Task list for 'How to Earn Money Using AI Book' feature implementa
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T024 Optimize Docusaurus book content for file size and build time in `frontend/book/`
-- [ ] T025 Implement error recovery and retry logic for all agent/API operations in `backend/src/services/`
-- [ ] T026 Implement comprehensive logging for all agent decisions, API calls, and queries in `backend/src/`
-- [ ] T027 Ensure session persistence for chatbot operations in `backend/src/services/rag_service.py`
-- [ ] T028 Enforce rate limiting for Qdrant/API services in `backend/src/api/main.py`
-- [ ] T029 Run end-to-end system tests for the entire solution in `tests/e2e/system_test.spec.js`
+- [x] T024 Optimize Docusaurus book content for file size and build time in `frontend/book/`
+- [x] T025 Implement error recovery and retry logic for all agent/API operations in `backend/src/services/`
+- [x] T026 Implement comprehensive logging for all agent decisions, API calls, and queries in `backend/src/`
+- [x] T027 Ensure session persistence for chatbot operations in `backend/src/services/rag_service.py`
+- [x] T028 Enforce rate limiting for Qdrant/API services in `backend/src/api/main.py`
+- [x] T029 Run end-to-end system tests for the entire solution in `tests/e2e/system_test.spec.js`
 
 ---
 

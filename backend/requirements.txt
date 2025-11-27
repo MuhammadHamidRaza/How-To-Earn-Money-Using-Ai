@@ -3,3 +3,5 @@ uvicorn
 openai-agents
 qdrant-client
 python-dotenv
+tenacity
+fastapi-limiter
